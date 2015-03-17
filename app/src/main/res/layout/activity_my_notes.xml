@@ -22,4 +22,12 @@
         android:layout_alignParentEnd="true"
         android:onClick="addNote"/>
 
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listElements"
+        android:layout_below="@+id/titleNotes"
+        android:layout_marginTop="30dp"
+        android:layout_alignEnd="@+id/button" />
+
 </RelativeLayout>

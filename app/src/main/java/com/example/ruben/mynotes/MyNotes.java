@@ -2,12 +2,17 @@ package com.example.ruben.mynotes;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 
 
-public class MyNotes extends Activity {
+public class MyNotes extends Activity implements AdapterView.OnItemClickListener {
 
     public static DBProxy db;
 
@@ -16,6 +21,24 @@ public class MyNotes extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_notes);
         db = new DBProxy(this);
+
+        Cursor c = db.ReadNotes();
+        String[] fromColumns = {db.DB_COL_ID, db.DB_COL_TITLE, db.DB_COL_NOTE};
+        int [] toView = {R.id.ElementTitle, R.id.ElementBody};
+
+        SimpleCursorAdapter adapter = new SimpleCursorAdapter(
+                this,
+                R.layout.activity_list_element,
+                c,
+                fromColumns,
+                toView,
+                0
+        );
+        ListView list = (ListView) findViewById(R.id.listElements);
+        list.setAdapter(adapter);
+        list.setOnItemClickListener(this);
+
+
     }
 
 
@@ -45,7 +68,15 @@ public class MyNotes extends Activity {
     public void addNote (View myText){
         Intent newView = new Intent(this, AddNotes.class); //preparamos la view que queremos lanzar
         startActivity(newView ); //abrimos la nueva view, mirar mainactivity2.java funcion onCreate
+    }
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent i = new Intent(this, EnterNewNote.class);
+        i.putExtra("id", id);
+        i.putExtra("title", ((TextView) view.findViewById(R.id.ElementTitle)).getText().toString());
+        i.putExtra("body", ((TextView) view.findViewById(R.id.ElementBody)).getText().toString());
+        startActivity(i);
 
     }
 }

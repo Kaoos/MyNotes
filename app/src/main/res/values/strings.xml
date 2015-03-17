@@ -10,5 +10,6 @@
     <string name="title_activity_add_note">AddNote</string>
     <string name="titleNote">Titol</string>
     <string name="title_activity_add_notes">AddNotes</string>
+    <string name="title_activity_list_element">listElement</string>
 
 </resources>

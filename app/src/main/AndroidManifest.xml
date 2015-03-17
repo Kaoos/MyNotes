@@ -24,6 +24,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.ruben.mynotes.MyNotes" />
         </activity>
+        <activity
+            android:name=".listElement"
+            android:label="@string/title_activity_list_element" >
+        </activity>
     </application>
 
 </manifest>
