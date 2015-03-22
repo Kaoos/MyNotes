@@ -40,11 +40,19 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:text="@string/Save"
+        android:id="@+id/button3"
+        android:onClick="saveNote"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Erase"
         android:id="@+id/button2"
-        android:layout_gravity="center_horizontal"
         android:onClick="delNote"
-        />
+        android:layout_gravity="center_horizontal" />
 
 
 </LinearLayout>

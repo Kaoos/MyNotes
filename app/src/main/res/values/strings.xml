@@ -18,4 +18,6 @@
     <string name="hintTitulo">Escribe aquí el nombre de la tarea</string>
     <string name="hintCuerpo">Aqui la descripción de la tarea</string>
 
+    <string name="Erase">Eliminar</string>
+    <string name="Save">Guardar</string>
 </resources>

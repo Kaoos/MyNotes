@@ -98,6 +98,11 @@ public class AddNotes extends Activity {
 
 
     }
+    public void saveNote(View myText)
+    {
+        Intent newView = new Intent(this, MyNotes.class); //preparamos la view que queremos lanzar
+        startActivity(newView ); //abrimos la nueva view, mirar mainactivity2.java funcion onCreate
+    }
 
 
 
