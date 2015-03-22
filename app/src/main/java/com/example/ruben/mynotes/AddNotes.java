@@ -1,19 +1,40 @@
 package com.example.ruben.mynotes;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.TextView;
 
 
 public class AddNotes extends Activity {
 
-
+   public boolean update = false;
+   public Integer idNOTA;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_notes);
+
+
+        Intent DiccionarioNombre = getIntent();//recuperarmos el diccionario Nombre
+        String titulo = DiccionarioNombre.getStringExtra(MyNotes.NOTA_TITULO); // Assignamos el valor del nombre
+        TextView eltitulo = (TextView) findViewById(R.id.notaTitulo); // buscamos el view donde introducioremos los datos
+        eltitulo.setText(titulo); //  asignamos el valor al view
+
+
+        String body = DiccionarioNombre.getStringExtra(MyNotes.NOTA_BODY); // Assignamos el valor del nombre
+        TextView elcuerpo = (TextView) findViewById(R.id.notaCuerpo); // buscamos el view donde introducioremos los datos
+        elcuerpo.setText(body); //  asignamos el valor al view
+
+        if (titulo!=null)
+        {update = true;
+         idNOTA = DiccionarioNombre.getExtras().getInt(MyNotes.NOTA_ID);
+        }
+
+
     }
 
 
@@ -39,19 +60,38 @@ public class AddNotes extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public static DBProxy db;
+    //public static DBProxy db;
 
     @Override
     protected void onPause() {
         super.onPause();
-   // public void onBackPressed() {
 
-        EditText TituloNota = (EditText) findViewById(R.id.titulo);
-        String addTitulo = TituloNota.getText().toString();
+        if (update == true){
 
-        EditText BodyNota = (EditText) findViewById(R.id.nota);
-        String addNote = BodyNota.getText().toString();
+            EditText TituloNota = (EditText) findViewById(R.id.notaTitulo);
+            String updateTitulo = TituloNota.getText().toString();
 
-        MyNotes.db.AddNote(addTitulo, addNote);
+            EditText BodyNota = (EditText) findViewById(R.id.notaCuerpo);
+            String updateNote = BodyNota.getText().toString();
+
+            MyNotes.db.updateNote(idNOTA, updateTitulo, updateNote);
+
+        }else{
+
+
+            EditText TituloNota = (EditText) findViewById(R.id.notaTitulo);
+            String addTitulo = TituloNota.getText().toString();
+
+            EditText BodyNota = (EditText) findViewById(R.id.notaCuerpo);
+            String addNote = BodyNota.getText().toString();
+            MyNotes.db.AddNote(addTitulo, addNote);
+
+        }
+
+
+
+
+
+
     }
 }

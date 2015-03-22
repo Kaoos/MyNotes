@@ -7,11 +7,17 @@
     tools:context="com.example.ruben.mynotes.listElement"
     android:orientation="vertical">
 
+
+   <!-- <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:id="@+id/ElementID"/>-->
+
     <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
         android:layout_height="wrap_content" android:id="@+id/ElementTitle"/>
 
     <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
         android:layout_height="wrap_content" android:id="@+id/ElementBody"/>
+
+
 
 
 </LinearLayout >

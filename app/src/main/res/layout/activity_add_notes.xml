@@ -7,18 +7,35 @@
     tools:context="com.example.ruben.mynotes.AddNotes"
     android:orientation="vertical">
 
-    <EditText android:text="@string/titleNote" android:layout_width="wrap_content"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/titulo"
-        android:singleLine="true" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/titleTitulo"
+        android:id="@+id/Titulo" />
+
+    <EditText  android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/notaTitulo"
+        android:singleLine="true"
+        android:hint="@string/hintTitulo"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/titleCuerpo"
+        android:id="@+id/Cuerpo" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/nota"
+        android:id="@+id/notaCuerpo"
         android:layout_below="@+id/editText"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:hint="@string/hintCuerpo"/>
+
+
 
 </LinearLayout>

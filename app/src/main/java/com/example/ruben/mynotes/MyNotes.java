@@ -14,6 +14,11 @@ import android.widget.TextView;
 
 public class MyNotes extends Activity implements AdapterView.OnItemClickListener {
 
+    final public static String NOTA_ID = "DicID" ;
+    final public static String NOTA_TITULO = "DicTitle";
+    final public static String NOTA_BODY= "DicBody";
+
+
     public static DBProxy db;
 
     @Override
@@ -23,7 +28,7 @@ public class MyNotes extends Activity implements AdapterView.OnItemClickListener
         db = new DBProxy(this);
 
         Cursor c = db.ReadNotes();
-        String[] fromColumns = {db.DB_COL_ID, db.DB_COL_TITLE, db.DB_COL_NOTE};
+        String[] fromColumns = {db.DB_COL_TITLE, db.DB_COL_NOTE};
         int [] toView = {R.id.ElementTitle, R.id.ElementBody};
 
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(
@@ -72,10 +77,16 @@ public class MyNotes extends Activity implements AdapterView.OnItemClickListener
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent i = new Intent(this, EnterNewNote.class);
-        i.putExtra("id", id);
-        i.putExtra("title", ((TextView) view.findViewById(R.id.ElementTitle)).getText().toString());
-        i.putExtra("body", ((TextView) view.findViewById(R.id.ElementBody)).getText().toString());
+
+
+
+
+
+        Intent i = new Intent(this, AddNotes.class);
+       // i.putExtra(NOTA_ID, ((TextView) view.findViewById(R.id.ElementID)).getText().toString());
+        i.putExtra(NOTA_TITULO, ((TextView) view.findViewById(R.id.ElementTitle)).getText().toString());
+        i.putExtra(NOTA_BODY, ((TextView) view.findViewById(R.id.ElementBody)).getText().toString());
+        i.putExtra(NOTA_ID, (int) id);
         startActivity(i);
 
     }

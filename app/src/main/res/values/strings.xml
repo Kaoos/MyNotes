@@ -8,8 +8,14 @@
     <string name="titleNotes">Notes</string>
     <string name="newNote">Add Note</string>
     <string name="title_activity_add_note">AddNote</string>
-    <string name="titleNote">Titol</string>
+
     <string name="title_activity_add_notes">AddNotes</string>
     <string name="title_activity_list_element">listElement</string>
+    <string name="titleID">Id</string>
+    <string name="titleTitulo">Tarea</string>
+    <string name="titleCuerpo">Descripcíon</string>
+    <string name="hintId">la ID se crea automaticamente</string>
+    <string name="hintTitulo">Escribe aquí el nombre de la tarea</string>
+    <string name="hintCuerpo">Aqui la descripción de la tarea</string>
 
 </resources>

@@ -55,20 +55,24 @@ public class DBProxy extends SQLiteOpenHelper {
 
     }
 
-    public void UpdateNote(long id, String title, String body){
+    public void updateNote(long id, String title, String body)
+    {
         SQLiteDatabase db = getWritableDatabase();
 
-        //new content
+// New value for one column
         ContentValues values = new ContentValues();
         values.put(DB_COL_TITLE, title);
         values.put(DB_COL_NOTE, body);
 
-        //en que fila segun la id
+// Which row to update, based on the ID
         String selection = DB_COL_ID + " LIKE ?";
-        String[] selectionArgs = {String.valueOf(id)};
-        int count = db.update(DB_TABLE_NAME,values,selection, null);
+        String[] selectionArgs = { String.valueOf(id) };
 
-
+        int count = db.update(
+                DB_TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
     }
 
 }
