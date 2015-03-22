@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -66,7 +67,7 @@ public class AddNotes extends Activity {
     protected void onPause() {
         super.onPause();
 
-        if (update == true){
+        if (update == true) {
 
             EditText TituloNota = (EditText) findViewById(R.id.notaTitulo);
             String updateTitulo = TituloNota.getText().toString();
@@ -76,7 +77,7 @@ public class AddNotes extends Activity {
 
             MyNotes.db.updateNote(idNOTA, updateTitulo, updateNote);
 
-        }else{
+        } else {
 
 
             EditText TituloNota = (EditText) findViewById(R.id.notaTitulo);
@@ -87,11 +88,19 @@ public class AddNotes extends Activity {
             MyNotes.db.AddNote(addTitulo, addNote);
 
         }
+    }
 
-
-
-
+    public void delNote(View myText)
+    {
+        Intent newView = new Intent(this, MyNotes.class); //preparamos la view que queremos lanzar
+        startActivity(newView ); //abrimos la nueva view, mirar mainactivity2.java funcion onCreate
+        MyNotes.db.DelNote(idNOTA);
 
 
     }
+
+
+
+
+
 }

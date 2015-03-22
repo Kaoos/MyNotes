@@ -75,4 +75,15 @@ public class DBProxy extends SQLiteOpenHelper {
                 selectionArgs);
     }
 
+    public void DelNote(long id)
+    {
+        SQLiteDatabase db = getWritableDatabase();
+        String table = DB_TABLE_NAME;
+        String whereClause = "_id" + "=?";
+        String[] whereArgs = new String[] { String.valueOf(id) };
+        db.delete(table, whereClause, whereArgs);
+
+
+    }
+
 }
